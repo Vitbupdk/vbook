@@ -7,10 +7,10 @@
         {
       "name": "Tiên Vực",
       "author": "Nhocconsr",
-      "path": "https://raw.githubusercontent.com/QuocSang87/Vbook-Ex-QS/master/tienvuc/plugin.zip",
+      "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/tienvuc/plugin.zip",
       "version": 1,
-      "source": "https://mangadex.org",
-      "icon": "https://raw.githubusercontent.com/QuocSang87/Vbook-Ex-QS/master/tienvuc/icon.png",
+      "source": "https://tienvuc.info",
+      "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/tienvuc/icon.png",
       "description": "Đọc truyen Tien Vuc",
       "type": "novel",
       "locale": "vi_VN"
