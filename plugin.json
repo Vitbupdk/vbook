@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "author": "QuocSang",
+    "description": "Vbook Extensions collection"
+  },
+  "data": [
+        {
+      "name": "Tiên Vực",
+      "author": "Nhocconsr",
+      "path": "https://raw.githubusercontent.com/QuocSang87/Vbook-Ex-QS/master/tienvuc/plugin.zip",
+      "version": 1,
+      "source": "https://mangadex.org",
+      "icon": "https://raw.githubusercontent.com/QuocSang87/Vbook-Ex-QS/master/tienvuc/icon.png",
+      "description": "Đọc truyen Tien Vuc",
+      "type": "novel",
+      "locale": "vi_VN"
+    }
+  ]
+}
