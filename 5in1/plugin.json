@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "5in1",
+    "author": "B",
+    "version": 62,
+    "source": "http://14.225.254.182",
+    "regexp": "(wwww.)?(((https://|http://)((sangtacviet.*?)|14.225.254.182)/truyen/(qidian|ptwxz|fanqie|69shu|qimao)/1/\\d+.*?))|69shuba.*?/book/(.*?).htm|69shu.biz/b/(.*?).html|((www|m).69yuedu.net/article/(.*?).html)|(www.(ptwxz|piaotian|piaotia).com/bookinfo/\\d+/\\d+.html$)",
+    "description": "không còn hỗ trợ",
+    "locale": "vi_VN",
+    "language": "javascript",
+    "type": "novel",
+    "encrypt": true
+  },
+  "script": {
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "home": "home.js",
+    "search": "search.js"
+  }
+}

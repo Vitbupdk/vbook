@@ -4,6 +4,17 @@
     "description": "Vbook Extensions collection"
   },
   "data": [
+      {
+            "name": "5in1",
+            "author": "B",
+            "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/5in1/plugin.zip",
+            "version": 61,
+            "source": "https://sangtacviet.app",
+            "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/5in1/icon.png",
+            "description": "không còn hỗ trợ",
+            "type": "novel",
+            "locale": "vi_VN"
+        },
         {
       "name": "Tiên Vực",
       "author": "Nhocconsr",
