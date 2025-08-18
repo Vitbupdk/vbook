@@ -6,18 +6,18 @@
   "data": [
       {
             "name": "5in1",
-            "author": "B",
+            "author": "Vitbupdk",
             "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/5in1/plugin.zip",
             "version": 61,
             "source": "https://sangtacviet.app",
             "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/5in1/icon.png",
-            "description": "không còn hỗ trợ",
+            "description": "Truyen tong hop nhieu nguon",
             "type": "novel",
             "locale": "vi_VN"
         },
         {
       "name": "Tiên Vực",
-      "author": "Nhocconsr",
+      "author": "Vitbupdk",
       "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/tienvuc/plugin.zip",
       "version": 1,
       "source": "https://tienvuc.info",
