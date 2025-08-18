@@ -8,7 +8,7 @@
             "name": "5in1",
             "author": "Vitbupdk",
             "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/5in1/plugin.zip",
-            "version": 61,
+            "version": 1,
             "source": "https://sangtacviet.app",
             "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/5in1/icon.png",
             "description": "Truyen tong hop nhieu nguon",
@@ -16,15 +16,15 @@
             "locale": "vi_VN"
         },
         {
-      "name": "Tiên Vực",
-      "author": "Vitbupdk",
-      "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/tienvuc/plugin.zip",
-      "version": 1,
-      "source": "https://tienvuc.info",
-      "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/tienvuc/icon.png",
-      "description": "Đọc truyen Tien Vuc",
-      "type": "novel",
-      "locale": "vi_VN"
-    }
+            "name": "Tiên Vực",
+            "author": "Vitbupdk",
+            "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/tienvuc/plugin.zip",
+            "version": 1,
+            "source": "https://tienvuc.info",
+            "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/tienvuc/icon.png",
+            "description": "Đọc truyen Tien Vuc",
+            "type": "novel",
+            "locale": "vi_VN"
+       }
   ]
 }
