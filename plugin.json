@@ -25,6 +25,15 @@
             "description": "Đọc truyen Tien Vuc",
             "type": "novel",
             "locale": "vi_VN"
-       }
+       },
+       {
+        "name": "Vozer",
+        "author": "Vitbupdk",
+        "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/vozer/plugin.zip",
+        "version": 1,
+        "source": "https://vozer.vn",
+        "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/vozer/icon.png",
+        "description": "Truyện Voz."
+        }
   ]
 }
