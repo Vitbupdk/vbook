@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Vozer 1",
     "author": "Vitbupdk",
-    "version": 1,
+    "version": 2,
     "source": "https://vozer.vn",
     "regexp": "https://vozer.vn/(.*?)$",
     "description": "Truyện voz",
