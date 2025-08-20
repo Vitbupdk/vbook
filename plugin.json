@@ -34,6 +34,15 @@
         "source": "https://vozer.vn",
         "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/vozer/icon.png",
         "description": "Truyện Voz."
+        },
+        {
+        "name": "Misskon",
+        "author": "Vitbupdk",
+        "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/misskon/plugin.zip",
+        "version": 1,
+        "source": "https://misskon.com",
+        "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/misskon/icon.png",
+        "description": "Xem ảnh"
         }
   ]
 }
