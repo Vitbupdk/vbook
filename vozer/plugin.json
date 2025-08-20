@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "name": "Vitbupdk",
-    "author": "Nhocconsr",
+    "name": "Vozer",
+    "author": "Vitbupdk",
     "version": 1,
     "source": "https://vozer.vn",
     "regexp": "https://vozer.vn/(.*?)$",
