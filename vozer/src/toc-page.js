@@ -1,53 +1,43 @@
 load('config.js');
 
-// Helper functions
-function _tx(el, d='') { try { return el ? el.text().trim() : d; } catch(e) { return d; } }
-function _attr(el, k, d='') { try { return el ? (el.attr(k) || '').trim() : d; } catch(e) { return d; } }
-function _pick(doc, sels) { if (typeof sels === 'string') sels = [sels]; for (const s of sels) { try { const e = doc.select(s).first(); if (e) return e; } catch(_) {} } return null; }
+function _attr(el, k, d) { if (d === undefined) d = ''; try { return el ? (el.attr(k) || '').trim() : d; } catch (e) { return d; } }
 
 function execute(url) {
-    let data = [];
-    let response = fetch(url, {
+    var data = [];
+    var response = fetch(url, {
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
         }
     });
     
-    if (!response.ok) {
-        return Response.error('Không thể tải phân trang mục lục');
+    if (!response || !response.ok) {
+        return Response.success([url]);
     }
     
-    let doc = response.html();
-    
-    // WordPress pagination selectors
-    const anchors = doc.select([
-        '[role=navigation] a[href*="pagechap="]',
-        '.pagination a',
-        '.page-numbers'
-    ].join(', '));
+    var doc = response.html();
+    var anchors = doc.select('[role=navigation] a[href*="pagechap="], .pagination a, .page-numbers');
     
     if (anchors.length === 0) {
         return Response.success([url]);
     }
     
-    let lastNumber = 1;
-    anchors.forEach(anchor => {
-        const href = _attr(anchor, 'href');
+    var lastNumber = 1;
+    for (var i = 0; i < anchors.size(); i++) {
+        var href = _attr(anchors.get(i), 'href');
         if (href) {
-            const match = href.match(/(?:pagechap|page|paged)=(\d+)/);
+            var match = href.match(/(?:pagechap|page|paged)=(\d+)/);
             if (match) {
-                const pageNumber = parseInt(match[1], 10);
+                var pageNumber = parseInt(match[1], 10);
                 if (!isNaN(pageNumber)) {
                     lastNumber = Math.max(lastNumber, pageNumber);
                 }
             }
         }
-    });
+    }
     
-    // Generate page URLs
-    for (let i = 1; i <= lastNumber; i++) {
-        const separator = url.includes('?') ? '&' : '?';
-        data.push(url + separator + 'pagechap=' + i);
+    for (var p = 1; p <= lastNumber; p++) {
+        var separator = url.indexOf('?') > -1 ? '&' : '?';
+        data.push(url + separator + 'pagechap=' + p);
     }
     
     return Response.success(data);
