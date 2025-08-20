@@ -1,9 +1,17 @@
 load('config.js');
 
+// Helper functions (same as gen.js)
+function _tx(el, d='') { try { return el ? el.text().trim() : d; } catch(e) { return d; } }
+function _attr(el, k, d='') { try { return el ? (el.attr(k) || '').trim() : d; } catch(e) { return d; } }
+function _pick(doc, sels) { if (typeof sels === 'string') sels = [sels]; for (const s of sels) { try { const e = doc.select(s).first(); if (e) return e; } catch(_) {} } return null; }
+function _abs(u) { if (!u) return ''; if (u.startsWith('http')) return u; if (u.startsWith('//')) return 'https:' + u; if (u.startsWith('/')) return BASE_URL + u; return BASE_URL + '/' + u; }
+function _cover(scope) { if (!scope) return ''; const img = scope.select('img').first(); if (!img) return ''; let src = _attr(img, 'data-src') || _attr(img, 'data-lazy-src') || _attr(img, 'data-original') || _attr(img, 'srcset'); if (src && src.includes(' ')) src = src.split(' ')[0]; if (!src) src = _attr(img, 'src'); return _abs(src); }
+function _cleanTitle(title) { if (!title) return ''; return title.replace(/^Chương\s+\d+\s*:?\s*/i, '').trim() || title; }
+
 function execute(key, page) {
     if (!page) page = '1';
     
-    // URL search mới
+    // WordPress search URL
     let searchUrl = BASE_URL + '/?s=' + encodeURIComponent(key);
     if (page > 1) {
         searchUrl += '&paged=' + page;
@@ -12,80 +20,80 @@ function execute(key, page) {
     let response = fetch(searchUrl, {
         method: "GET",
         headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Language': 'vi-VN,vi;q=0.9,en;q=0.8'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
         }
     });
     
     if (response.ok) {
         let doc = response.html();
         let comiclist = [];
+        let seen = {};
         
-        // Sử dụng logic tương tự gen.js
-        let results = doc.select('article, .search-result, .story-item');
+        // Same logic as gen.js for consistency
+        let articles = doc.select('article.post, .post-item, .story-item, .search-result');
         
-        if (results.size() === 0) {
-            results = doc.select('.post, .item, .result');
+        if (articles.size() === 0) {
+            articles = doc.select('.post, .item, .result');
         }
         
-        results.forEach(e => {
+        articles.forEach(e => {
             try {
-                let titleElement = e.select('a[href*="/"]').first();
-                if (!titleElement) return;
+                const titleLink = _pick(e, [
+                    'h2.entry-title a',
+                    'h3.entry-title a', 
+                    '.post-title a',
+                    'a[rel="bookmark"]',
+                    'h2 a', 'h3 a'
+                ]);
                 
-                let title = titleElement.text().trim();
-                let link = titleElement.attr('href');
+                if (!titleLink) return;
                 
-                if (!title || !link) return;
+                const href = _attr(titleLink, 'href');
+                const title = _tx(titleLink);
                 
-                // Đảm bảo link đầy đủ
-                if (!link.startsWith('http')) {
-                    link = link.startsWith('/') ? BASE_URL + link : BASE_URL + '/' + link;
-                }
+                if (!href || !title) return;
                 
-                let cover = '';
-                let imgElement = e.select('img').first();
-                if (imgElement) {
-                    cover = imgElement.attr('data-src') || 
-                           imgElement.attr('src') || '';
-                    if (cover && !cover.startsWith('http')) {
-                        cover = cover.startsWith('/') ? BASE_URL + cover : BASE_URL + '/' + cover;
-                    }
-                }
+                const fullUrl = _abs(href);
+                if (seen[fullUrl]) return;
+                seen[fullUrl] = true;
+                
+                const cover = _cover(e);
+                const descEl = _pick(e, ['.excerpt', '.entry-summary', 'p']);
+                const description = _tx(descEl);
+                const cleanedTitle = _cleanTitle(title);
                 
                 comiclist.push({
-                    name: title,
-                    link: link,
+                    name: cleanedTitle,
+                    link: fullUrl,
                     cover: cover,
-                    description: '',
+                    description: description,
                     host: BASE_URL
                 });
                 
             } catch (error) {
-                console.log('Search error:', error);
+                // Continue on error
             }
         });
         
-        // Tìm next page
+        // Pagination
         let next = null;
-        try {
-            let nextElement = doc.select('.next, .pagination a[rel="next"]').first();
-            if (nextElement) {
-                let nextHref = nextElement.attr('href');
-                if (nextHref) {
-                    let pageMatch = nextHref.match(/paged[=\/](\d+)/);
-                    if (pageMatch) {
-                        next = pageMatch[1];
-                    }
-                }
+        const nextLink = _pick(doc, [
+            'a[rel="next"]',
+            '.pagination a.next', 
+            '.nav-links a.next'
+        ]);
+        
+        if (nextLink) {
+            const nextHref = _attr(nextLink, 'href');
+            if (nextHref) {
+                const match = nextHref.match(/paged=(\d+)/);
+                next = match ? match[1] : (parseInt(page, 10) + 1).toString();
             }
-        } catch (error) {
-            // Ignore
         }
         
         return Response.success(comiclist, next);
     }
     
-    return Response.error('Không thể tìm kiếm. Vui lòng thử lại.');
+    return Response.error('Không thể tìm kiếm');
 }

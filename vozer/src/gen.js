@@ -1,124 +1,121 @@
 load('config.js');
 
+// Helper functions
+function _tx(el, d='') { try { return el ? el.text().trim() : d; } catch(e) { return d; } }
+function _attr(el, k, d='') { try { return el ? (el.attr(k) || '').trim() : d; } catch(e) { return d; } }
+function _pick(doc, sels) { if (typeof sels === 'string') sels = [sels]; for (const s of sels) { try { const e = doc.select(s).first(); if (e) return e; } catch(_) {} } return null; }
+function _abs(u) { if (!u) return ''; if (u.startsWith('http')) return u; if (u.startsWith('//')) return 'https:' + u; if (u.startsWith('/')) return BASE_URL + u; return BASE_URL + '/' + u; }
+function _cover(scope) { if (!scope) return ''; const img = scope.select('img').first(); if (!img) return ''; let src = _attr(img, 'data-src') || _attr(img, 'data-lazy-src') || _attr(img, 'data-original') || _attr(img, 'srcset'); if (src && src.includes(' ')) src = src.split(' ')[0]; if (!src) src = _attr(img, 'src'); return _abs(src); }
+function _cleanTitle(title) { if (!title) return ''; return title.replace(/^Chương\s+\d+\s*:?\s*/i, '').trim() || title; }
+
 function execute(url, page) {
     if (!page) page = '1';
     
-    // Thêm headers để bypass protection
     let response = fetch(url, {
         method: "GET",
         headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'vi-VN,vi;q=0.9,en;q=0.8',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Connection': 'keep-alive',
-            'Upgrade-Insecure-Requests': '1'
+            'Accept-Language': 'vi-VN,vi;q=0.9,en;q=0.8'
         },
         queries: {
-            page: page
+            page: page,
+            paged: page // WordPress pagination
         }
     });
     
     if (response.ok) {
         let doc = response.html();
         let comiclist = [];
+        let seen = {};
         
-        // Selectors mới dựa trên cấu trúc hiện tại
-        let novels = doc.select('article, .story-item, .novel-item, .post-item');
+        // WordPress post selectors với fallbacks
+        let articles = doc.select('article.post, .post-item, .story-item, .entry');
         
-        // Fallback selectors nếu không tìm thấy
-        if (novels.size() === 0) {
-            novels = doc.select('.story, .novel, .post, .item');
+        // Fallback nếu không tìm thấy
+        if (articles.size() === 0) {
+            articles = doc.select('.post, .item, .card, .story');
         }
         
-        // Fallback cuối cùng - tìm theo pattern link
-        if (novels.size() === 0) {
-            novels = doc.select('a[href*="/"]').parent();
-        }
-        
-        novels.forEach(e => {
+        articles.forEach(e => {
             try {
                 // Tìm title link với multiple selectors
-                let titleElement = e.select('a[href*="/"]').first();
-                if (!titleElement) return;
+                const titleLink = _pick(e, [
+                    'h2.entry-title a',
+                    'h3.entry-title a', 
+                    '.post-title a',
+                    '.story-title a',
+                    'a[rel="bookmark"]',
+                    'h2 a',
+                    'h3 a'
+                ]);
                 
-                let title = titleElement.text().trim();
-                let link = titleElement.attr('href');
+                if (!titleLink) return;
                 
-                if (!title || !link) return;
+                const href = _attr(titleLink, 'href');
+                const title = _tx(titleLink);
                 
-                // Skip các link không phải truyện
-                if (link.includes('javascript:') || 
-                    link.includes('mailto:') || 
-                    link.includes('#') ||
-                    link.length < 5) return;
+                if (!href || !title) return;
                 
-                // Đảm bảo link đầy đủ
-                if (!link.startsWith('http')) {
-                    if (link.startsWith('/')) {
-                        link = BASE_URL + link;
-                    } else {
-                        link = BASE_URL + '/' + link;
-                    }
-                }
+                // Skip non-story pages
+                if (href.includes('/the-loai/') || 
+                    href.includes('/lien-he') || 
+                    href.includes('/thong-bao') || 
+                    href.includes('/terms-of-service') ||
+                    href.includes('/tag/') ||
+                    href.includes('/category/')) return;
                 
-                // Tìm ảnh bìa
-                let cover = '';
-                let imgElement = e.select('img').first();
-                if (imgElement) {
-                    cover = imgElement.attr('data-src') || 
-                           imgElement.attr('data-lazy-src') ||
-                           imgElement.attr('src') || '';
-                    
-                    if (cover && !cover.startsWith('http')) {
-                        if (cover.startsWith('/')) {
-                            cover = BASE_URL + cover;
-                        } else {
-                            cover = BASE_URL + '/' + cover;
-                        }
-                    }
-                }
+                const fullUrl = _abs(href);
+                if (seen[fullUrl]) return;
+                seen[fullUrl] = true;
                 
-                // Tìm mô tả
-                let description = '';
-                let descElement = e.select('p, .description, .summary').first();
-                if (descElement) {
-                    description = descElement.text().trim();
-                }
+                // Get cover image với lazy loading support
+                const cover = _cover(e);
+                
+                // Get description
+                const descEl = _pick(e, ['.excerpt', '.entry-summary', '.description', 'p']);
+                const description = _tx(descEl);
+                
+                // Clean title
+                const cleanedTitle = _cleanTitle(title);
                 
                 comiclist.push({
-                    name: title,
-                    link: link,
+                    name: cleanedTitle,
+                    link: fullUrl,
                     cover: cover,
                     description: description,
                     host: BASE_URL
                 });
                 
             } catch (error) {
-                // Log error nhưng không dừng vòng lặp
-                console.log('Error processing element:', error);
+                // Continue on error
             }
         });
         
-        // Tìm next page
+        // Pagination với multiple selectors
         let next = null;
-        try {
-            let nextElement = doc.select('a[rel="next"], .next, .pagination a').last();
-            if (nextElement) {
-                let nextHref = nextElement.attr('href');
-                if (nextHref) {
-                    let pageMatch = nextHref.match(/page[=\/](\d+)/);
-                    if (pageMatch) {
-                        next = pageMatch[1];
-                    }
+        const nextLink = _pick(doc, [
+            'a[rel="next"]',
+            '.pagination a.next',
+            '.nav-links a.next',
+            '.page-numbers.next'
+        ]);
+        
+        if (nextLink) {
+            const nextHref = _attr(nextLink, 'href');
+            if (nextHref) {
+                const match = nextHref.match(/(?:page|paged)=(\d+)/);
+                if (match) {
+                    next = match[1];
+                } else {
+                    // Fallback: increment current page
+                    next = (parseInt(page, 10) + 1).toString();
                 }
             }
-        } catch (error) {
-            // Ignore pagination errors
         }
         
         return Response.success(comiclist, next);
     }
     
-    return Response.error('Không thể tải trang web. Vui lòng thử lại sau.');
+    return Response.error('Không thể tải danh sách truyện');
 }

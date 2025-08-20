@@ -1,65 +1,70 @@
 load('config.js');
 
+// Helper functions
+function _tx(el, d='') { try { return el ? el.text().trim() : d; } catch(e) { return d; } }
+function _attr(el, k, d='') { try { return el ? (el.attr(k) || '').trim() : d; } catch(e) { return d; } }
+function _pick(doc, sels) { if (typeof sels === 'string') sels = [sels]; for (const s of sels) { try { const e = doc.select(s).first(); if (e) return e; } catch(_) {} } return null; }
+function _abs(u) { if (!u) return ''; if (u.startsWith('http')) return u; if (u.startsWith('//')) return 'https:' + u; if (u.startsWith('/')) return BASE_URL + u; return BASE_URL + '/' + u; }
+function _chapterNum(url) { if (!url) return 0; const match = url.match(/chuong-(\d+)/i); return match ? parseInt(match[1], 10) : 0; }
+
 function execute(url) {
-    let response = fetch(url, {
+    const response = fetch(url, {
         headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
         }
     });
     
     if (!response.ok) {
-        return Response.error('Không thể tải danh sách chương');
+        return Response.error('Không thể tải mục lục');
     }
     
     let doc = response.html();
     const data = [];
+    const seen = {};
     
-    // Tìm danh sách chương với multiple selectors
-    let chapSelectors = [
-        'table tr td a',
+    // Multiple selectors cho chapter links
+    let chapList = doc.select([
+        'table.w-full.mb-5 tr td a',  // Original selector
         '.chapter-list a',
         '.toc a',
-        'a[href*="chuong"]',
-        'a[href*="chapter"]'
-    ];
+        'a[href*="/chuong-"]',
+        '.entry-content a[href*="/chuong-"]'
+    ].join(', '));
     
-    let chapList = null;
-    for (let selector of chapSelectors) {
-        chapList = doc.select(selector);
-        if (chapList.size() > 0) break;
-    }
-    
-    if (chapList && chapList.size() > 0) {
-        for (let j = 0; j < chapList.size(); j++) {
-            let element = chapList.get(j);
-            let title = element.text().trim();
-            let link = element.attr("href");
+    for (let j = 0; j < chapList.size(); j++) {
+        let element = chapList.get(j);
+        const name = _tx(element);
+        const href = _attr(element, 'href');
+        
+        if (name && href) {
+            const fullUrl = _abs(href);
+            if (seen[fullUrl]) continue;
+            seen[fullUrl] = true;
             
-            if (title && link) {
-                if (!link.startsWith('http')) {
-                    link = link.startsWith('/') ? BASE_URL + link : BASE_URL + '/' + link;
-                }
-                
-                data.push({
-                    name: title,
-                    url: link,
-                    host: BASE_URL
-                });
-            }
+            data.push({
+                name: name,
+                url: fullUrl,
+                host: BASE_URL
+            });
         }
     }
     
-    // Nếu không tìm thấy chương nào, thử tìm link đầu tiên
+    // Sort chapters by number
+    data.sort((a, b) => _chapterNum(a.url) - _chapterNum(b.url));
+    
+    // Fallback nếu không tìm thấy chapters
     if (data.length === 0) {
-        let firstChapter = doc.select('a[href*="/"]').first();
-        if (firstChapter) {
-            let link = firstChapter.attr('href');
-            if (link && !link.startsWith('http')) {
-                link = link.startsWith('/') ? BASE_URL + link : BASE_URL + '/' + link;
-            }
+        if (url.match(/\/chuong-\d+/i)) {
+            const currentTitle = _tx(_pick(doc, ['h1.entry-title', 'h2.entry-title']), 'Chương hiện tại');
+            data.push({
+                name: currentTitle,
+                url: url,
+                host: BASE_URL
+            });
+        } else {
             data.push({
                 name: 'Bắt đầu đọc',
-                url: link,
+                url: url,
                 host: BASE_URL
             });
         }
