@@ -1,0 +1,24 @@
+{
+    "metadata": {
+        "name": "Vozer",
+        "author": "ngatngay",
+        "version": 17,
+        "source": "https://vozer.vn",
+        "regexp": "https://vozer.(vn|top)/[^/]+/?$",
+        "description": "vozer.vn",
+        "local": "vi_VN",
+        "language": "javascript",
+        "type": "novel",
+        "encrypt": true,
+        "is_free": true
+    },
+    "script": {
+        "home": "home.js",
+        "genre": "genre.js",
+        "detail": "detail.js",
+        "search": "search.js",
+        "page": "toc-page.js",
+        "toc": "toc.js",
+        "chap": "chap.js"
+    }
+}

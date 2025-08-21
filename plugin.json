@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "author": "QuocSang",
+    "author": "Vitbupdk",
     "description": "Vbook Extensions collection"
   },
   "data": [
@@ -37,11 +37,11 @@
     },
   {
     "name": "69shu",
-    "author": "ngatngay",
-    "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/69shu.zip",
-    "version": 4,
+    "author": "Vitbupdk",
+    "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/69shu-plugin/plugin.zip",
+    "version": 1,
     "source": "https://www.69shuba.com",
-    "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/icon.png",
+    "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/69shu-plugin/icon.png",
     "description": "69shu.com",
     "type": "chinese_novel",
     "locale": "zh_CN"
@@ -103,22 +103,22 @@
 },
 {
     "name": "Sáng Tác Việt",
-    "author": "ngatngay",
-    "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/sangtacviet.zip",
-    "version": 4,
+    "author": "Vitbupdk",
+    "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/sangtacviet-plugin/plugin.zip",
+    "version": 1,
     "source": "https://sangtacviet.app",
-    "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/icon.png",
+    "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/sangtacviet-plugin/icon.png",
     "description": "Liên Hệ để mua HTTP SEVER",
     "type": "chinese_novel",
     "locale": "vi_VN"
 },
 {
     "name": "Vozer",
-    "author": "ngatngay",
-    "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/vozer.zip",
-    "version": 17,
+    "author": "Vitbupdk",
+    "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/vozer-plugin/plugin.zip",
+    "version": 1,
     "source": "https://vozer.vn",
-    "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/icon.png",
+    "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/vozer-plugin/icon.png",
     "description": "vozer.vn",
     "type": "novel",
     "locale": "vi_VN"

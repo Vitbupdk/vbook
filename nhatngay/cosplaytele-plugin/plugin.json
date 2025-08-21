@@ -1,0 +1,24 @@
+{
+    "metadata": {
+        "name": "CosplayTele",
+        "author": "ngatngay",
+        "version": 1,
+        "source": "https://cosplaytele.com",
+        "regexp": "cosplaytele.com/(.+)$",
+        "description": "cosplaytele.com",
+        "locale": "en_US",
+        "language": "javascript",
+        "type": "comic",
+        "tag": "nsfw",
+        "encrypt": true,
+        "is_free": true
+    },
+    "script": {
+        "home": "home.js",
+        "genre": "tag.js",
+        "detail": "detail.js",
+        "search": "search.js",
+        "toc": "toc.js",
+        "chap": "chap.js"
+    }
+}
