@@ -1,7 +1,7 @@
 {
     "metadata": {
         "name": "ManhwaHentai",
-        "author": "ngatngay",
+        "author": "Vitbupdk",
         "version": 1,
         "source": "https://manhwahentai.me",
         "regexp": "(www.)?manhwahentai.me/webtoon/[^/]+/?",

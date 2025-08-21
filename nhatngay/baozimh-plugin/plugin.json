@@ -1,7 +1,7 @@
 {
     "metadata": {
         "name": "baozimh",
-        "author": "ngatngay",
+        "author": "Vitbupdk",
         "version": 1,
         "source": "https://www.baozimh.com",
         "regexp": "(www.|cn.)?baozimh.com/comic/(.*?)",

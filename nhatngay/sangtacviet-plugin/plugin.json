@@ -1,8 +1,8 @@
 {
     "metadata": {
         "name": "Sáng Tác Việt",
-        "author": "ngatngay",
-        "version": 4,
+        "author": "Vitbupdk",
+        "version": 1,
         "source": "https://sangtacviet.app",
         "regexp": "(www.)?(sangtacviet).[a-z]+/truyen/[a-zA-Z0-9/-]+$",
         "description": "Liên Hệ để mua HTTP SEVER",

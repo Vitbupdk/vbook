@@ -1,8 +1,8 @@
 {
     "metadata": {
         "name": "CManga",
-        "author": "ngatngay",
-        "version": 4,
+        "author": "Vitbupdk",
+        "version": 1,
         "source": "https://cmangax3.com",
         "regexp": "(www.)?cmanga[a-z]\\d?.com/album/[^/]+/?$",
         "description": "Đọc truyện trên trang CManga",

@@ -1,8 +1,8 @@
 {
     "metadata": {
         "name": "nhentai",
-        "author": "ngatngay",
-        "version": 3,
+        "author": "Vitbupdk",
+        "version": 1,
         "source": "https://nhentai.net",
         "regexp": "(www.)?nhentai.net/g/\\d+/?$",
         "description": "nhentai.net",

@@ -1,8 +1,8 @@
 {
     "metadata": {
         "name": "69shu",
-        "author": "ngatngay",
-        "version": 4,
+        "author": "Vitbupdk",
+        "version": 1,
         "source": "https://www.69shuba.com",
         "regexp": "(www\\.)?69(shu|shuba|xinshu|yuedu)\\.(.*?)/(book|b)/.*?\\.(htm|html)",
         "description": "69shu.com",

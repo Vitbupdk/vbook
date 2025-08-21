@@ -1,8 +1,8 @@
 {
     "metadata": {
         "name": "Vozer",
-        "author": "ngatngay",
-        "version": 17,
+        "author": "Vitbupdk",
+        "version": 1,
         "source": "https://vozer.vn",
         "regexp": "https://vozer.(vn|top)/[^/]+/?$",
         "description": "vozer.vn",
