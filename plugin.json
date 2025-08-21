@@ -25,24 +25,87 @@
             "description": "Đọc truyen Tien Vuc",
             "type": "novel",
             "locale": "vi_VN"
-       },
-       {
-        "name": "Vozer 1",
-        "author": "Vitbupdk",
-        "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/vozer/plugin.zip",
-        "version": 5,
-        "source": "https://vozer.vn",
-        "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/vozer/icon.png",
-        "description": "Truyện Voz."
         },
         {
-        "name": "Misskon",
-        "author": "Vitbupdk",
-        "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/misskon/plugin.zip",
-        "version": 1,
-        "source": "https://misskon.com",
-        "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/misskon/icon.png",
-        "description": "Xem ảnh"
-        }
+            "name": "Misskon",
+            "author": "Vitbupdk",
+            "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/misskon/plugin.zip",
+            "version": 1,
+            "source": "https://misskon.com",
+            "icon": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/misskon/icon.png",
+            "description": "Xem ảnh"
+          },
+          {
+            "name": "69shu",
+            "author": "ngatngay",
+            "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/69shu.zip",
+            "version": 4,
+            "source": "https://www.69shuba.com",
+            "icon": "https://xn--ngc-bmz.vn/vbook/plugin-icon/69shu",
+            "description": "69shu.com"
+          },
+          {
+            "name": "baozimh",
+            "author": "ngatngay",
+            "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/baozimh.zip",
+            "version": 1,
+            "source": "https://www.baozimh.com",
+            "icon": "https://xn--ngc-bmz.vn/vbook/plugin-icon/baozimh",
+            "description": "Truyện tranh Trung Quốc"
+          },
+          {
+            "name": "CManga",
+            "author": "ngatngay",
+            "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/cmanga.zip",
+            "version": 4,
+            "source": "https://cmangax3.com",
+            "icon": "https://xn--ngc-bmz.vn/vbook/plugin-icon/cmanga",
+            "description": "Đọc truyện trên trang CManga"
+          },
+          {
+            "name": "CosplayTele",
+            "author": "ngatngay",
+            "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/cosplaytele.zip",
+            "version": 1,
+            "source": "https://cosplaytele.com",
+            "icon": "https://xn--ngc-bmz.vn/vbook/plugin-icon/cosplaytele.com",
+            "description": "cosplaytele.com"
+          },
+          {
+            "name": "ManhwaHentai",
+            "author": "ngatngay",
+            "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/manhwahentai.zip",
+            "version": 1,
+            "source": "https://manhwahentai.me",
+            "icon": "https://xn--ngc-bmz.vn/vbook/plugin-icon/manhwahentai",
+            "description": "Đọc truyện trên trang manhwahentai.me"
+          },
+          {
+            "name": "nhentai",
+            "author": "ngatngay",
+            "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/nhentai.zip",
+            "version": 3,
+            "source": "https://nhentai.net",
+            "icon": "https://xn--ngc-bmz.vn/vbook/plugin-icon/nhentai",
+            "description": "nhentai.net"
+          },
+          {
+            "name": "Sáng Tác Việt",
+            "author": "ngatngay",
+            "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/sangtacviet.zip",
+            "version": 4,
+            "source": "https://sangtacviet.app",
+            "icon": "https://xn--ngc-bmz.vn/vbook/plugin-icon/sangtacviet",
+            "description": "Liên Hệ để mua HTTP SEVER"
+          },
+          {
+            "name": "Vozer",
+            "author": "ngatngay",
+            "path": "https://raw.githubusercontent.com/Vitbupdk/vbook/main/nhatngay/vozer.zip",
+            "version": 17,
+            "source": "https://vozer.vn",
+            "icon": "https://xn--ngc-bmz.vn/vbook/plugin-icon/vozer",
+            "description": "vozer.vn"
+          }
   ]
 }
