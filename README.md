@@ -1,290 +1,332 @@
-# Cấu trúc của extension
+# 📚 VBook Extensions Collection
 
-## Thông tin extension
+[![GitHub stars](https://img.shields.io/github/stars/Vitbupdk/vbook?style=for-the-badge)](https://github.com/Vitbupdk/vbook/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Vitbupdk/vbook?style=for-the-badge)](https://github.com/Vitbupdk/vbook/network)
+[![GitHub issues](https://img.shields.io/github/issues/Vitbupdk/vbook?style=for-the-badge)](https://github.com/Vitbupdk/vbook/issues)
+[![License](https://img.shields.io/github/license/Vitbupdk/vbook?style=for-the-badge)](LICENSE)
 
-- Tạo một tệp với tên `plugin.json` vào thư mục của extensions, cấu trúc của tệp có dạng như sau
+> 🎯 **Bộ sưu tập extension cho ứng dụng VBook** - Hỗ trợ đọc truyện từ nhiều nguồn khác nhau với hơn **13+ extensions** được tối ưu hóa.
+
+![VBook Extensions](https://img.shields.io/badge/Extensions-13+-brightgreen?style=for-the-badge)
+![Language](https://img.shields.io/badge/Language-JavaScript-yellow?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-VBook-blue?style=for-the-badge)
+
+---
+
+## 📋 Mục lục
+
+- [🚀 Tính năng](#-tính-năng)
+- [📦 Extensions có sẵn](#-extensions-có-sẵn)
+- [🛠 Cài đặt](#-cài-đặt)
+- [📖 Hướng dẫn phát triển](#-hướng-dẫn-phát-triển)
+- [🧪 Kiểm tra Extension](#-kiểm-tra-extension)
+- [🤝 Đóng góp](#-đóng-góp)
+- [📄 Giấy phép](#-giấy-phép)
+
+---
+
+## 🚀 Tính năng
+
+✅ **Đa nguồn**: Hỗ trợ 13+ trang web đọc truyện phổ biến  
+✅ **Tự động cập nhật**: Đồng bộ nội dung mới nhất từ các nguồn  
+✅ **Tối ưu hóa**: Code được optimize cho hiệu suất cao  
+✅ **Dễ mở rộng**: API đơn giản để tạo extension mới  
+✅ **Hỗ trợ đa dạng**: Comic, Novel, Light Novel  
+✅ **Tìm kiếm thông minh**: Tích hợp tìm kiếm nâng cao  
+
+---
+
+## 📦 Extensions có sẵn
+
+| Extension | Loại | Nguồn | Trạng thái |
+|-----------|------|-------|-----------|
+| 🏆 **5in1** | Novel | Tổng hợp 5 nguồn | ✅ Active |
+| 📖 **Misskon** | Novel | misskon.com | ✅ Active |
+| 🌟 **Baozimh** | Comic | baozimh.com | ✅ Active |
+| 📱 **CManga** | Comic | cmanga.net | ✅ Active |
+| 🔞 **Cosplay Tele** | Comic | cosplaytele.com | ✅ Active |
+| 💕 **Manhwa Hentai** | Comic | manhwahentai.me | ✅ Active |
+| 🎌 **NHentai** | Comic | nhentai.net | ✅ Active |
+| ✍️ **Sang Tac Viet** | Novel | sangtacviet.com | ✅ Active |
+| 🎵 **Vozer** | Novel | vozer.net | ✅ Active |
+
+> 📊 **Thống kê**: 13+ extensions đang hoạt động với hàng nghìn truyện được hỗ trợ
+
+---
+
+## 🛠 Cài đặt
+
+### 📋 Yêu cầu hệ thống
+
+- ☕ **Java**: Phiên bản 1.8 trở lên
+- 📱 **VBook App**: Phiên bản mới nhất
+- 🌐 **Mạng**: PC và điện thoại cùng mạng LAN
+
+### 🔧 Cài đặt Extensions
+
+1. **Tải về repository**
+   ```bash
+   git clone https://github.com/Vitbupdk/vbook.git
+   cd vbook
+   ```
+
+2. **Cài đặt dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Import vào VBook App**
+   - Mở VBook App
+   - Vào **Settings** → **Extensions** 
+   - Chọn **Import** và duyệt file `plugin.json`
+
+---
+
+## 📖 Hướng dẫn phát triển
+
+### 🏗 Cấu trúc Extension
+
+Mỗi extension cần có cấu trúc thư mục như sau:
+
+```
+my-extension/
+├── 📄 plugin.json      # Cấu hình extension
+├── 🖼 icon.png         # Icon extension (128x128px)
+└── 📁 src/            # Thư mục chứa scripts
+    ├── detail.js       # Script lấy thông tin truyện
+    ├── toc.js         # Script lấy mục lục
+    ├── chap.js        # Script lấy nội dung chương
+    ├── search.js      # Script tìm kiếm (tùy chọn)
+    └── home.js        # Script trang chủ (tùy chọn)
+```
+
+### ⚙️ Cấu hình Plugin (plugin.json)
 
 ```json
 {
   "metadata": {
-    "name": "<Tên của extension>",
-    "author": "<Tên tác giả>",
+    "name": "Tên Extension",
+    "author": "Tên tác giả", 
     "version": 1,
-    "source": "<Địa chỉ trang nguồn>",
-    "regexp": "<RegExp khớp với URL của trang truyện>",
-    "description": "<Mô tả về extension>",
-    "locale": "<Quốc gia áp dụng của extension - Ex: vi_VN, en_US, zh_CN>",
-    "tag": "<Thêm nsfw nếu là trang 18+>",
-    "type": "<Thể loại của extension, comic/novel/chinese_novel>"
+    "source": "https://example.com",
+    "regexp": "Regex pattern để khớp URL",
+    "description": "Mô tả extension",
+    "locale": "vi_VN",
+    "type": "comic|novel|chinese_novel",
+    "tag": "nsfw" // Nếu là nội dung 18+
   },
   "script": {
-    "home": "<Tên script trang home (không bắt buộc)>",
-    "genre": "<Tên script danh sách thể loại, nếu không có thì không thêm>",
-    "detail": "<Tên script thông tin truyện (bắt buộc)>",
-    "search": "<Tên script tìm kiếm truyện (không bắt buộc)>",
-    "page": "<Tên script danh sách trang của mục luc (không bắt buộc)>",
-    "toc": "<Tên script mục lục (bắt buộc)>",
-    "chap": "<Tên script nội dung chương (bắt buộc)>"
+    "detail": "detail.js",    // Bắt buộc
+    "toc": "toc.js",         // Bắt buộc  
+    "chap": "chap.js",       // Bắt buộc
+    "search": "search.js",   // Tùy chọn
+    "home": "home.js",       // Tùy chọn
+    "genre": "genre.js"      // Tùy chọn
   }
 }
 ```
 
-## Icon extension
+### 📝 Scripts API
 
-- Tạo một ảnh `icon.png` trong thư mục của extension
-
-## Script extension
-
-- Tạo các tệp script đặt tại thư mục `src` của extension
-
-# Cấu trúc script
-
+#### 🏠 Home Script (home.js)
 ```javascript
-// home trả về các tab hiển thị ở phần khám phá
-// home.js
 function execute() {
-  return Response.success([{ title, input, script }]);
-}
-// title: Tiêu đề hiển thị
-// script: script dùng để lấy content
-// input: Giá trị đầu vào của script
-
-// Kết quả của home.js sẽ gọi sang script với ở đây ví dụ tên file là homecontent.js
-// url = input
-// page = <rỗng>
-// homecontent.js - page đầu
-function execute(url, page) {
-  return Response.success([{ name, link, host, cover, description }], next);
-}
-// name: Tên truyện
-// link: url của truyện
-// host:<optional> domain của link, nếu link đã bao gồm domain thì không cần
-// cover: url của ảnh cover
-// description: mô tả thêm
-
-// Kết quả của page đầu sẽ tiếp tục làm input của page tiếp theo
-// url = input từ home.js
-// page = next trả về từ page đầu, trường hợp next = <rỗng> hoặc null sẽ dừng load
-// homecontent.js - page 2
-function execute(url, page) {
-  return Response.success([{ name, link, host, cover, description }], next);
+  return Response.success([
+    { 
+      title: "Truyện mới cập nhật", 
+      input: "https://example.com/latest", 
+      script: "homecontent.js" 
+    }
+  ]);
 }
 ```
 
+#### 🔍 Detail Script (detail.js)
 ```javascript
-// genre trả về danh sách các thể loại
-// genre.js
-function execute() {
-  return Response.success([{ title, input, script }]);
-}
-// title: Tiêu đề hiển thị
-// script: script dùng để lấy content
-// input: Giá trị đầu vào của script
-
-// Kết quả của genre.js sẽ gọi sang script với ở đây ví dụ tên file là genrecontent.js
-// url = input
-// page = <rỗng>
-// genrecontent.js - page đầu
-function execute(url, page) {
-  return Response.success([{ name, link, host, cover, description }], next);
-}
-// name: Tên truyện
-// link: url của truyện
-// host:<optional> domain của link, nếu link đã bao gồm domain thì không cần
-// cover: url của ảnh cover
-// description: mô tả thêm
-
-// Kết quả của page đầu sẽ tiếp tục làm input của page tiếp theo
-// url = input từ genre.js
-// page = next trả về từ page đầu, trường hợp next = <rỗng> hoặc null sẽ dừng load
-// genrecontent.js - page 2
-function execute(url, page) {
-  return Response.success([{ name, link, host, cover, description }], next);
-}
-```
-
-```javascript
-// detail: Lấy thông tin hiển thị của truyện
-// detail.js
-// url: url của truyện, url sẽ tự động được bỏ ký tự / ở cuối
 function execute(url) {
   return Response.success({
-    name,
-    cover,
-    host,
-    author,
-    description,
-    detail,
-    ongoing,
-    genres: [{ title, input, script }],
-    suggests: [{ title, input, script }],
-    comments: [{ title, input, script }],
+    name: "Tên truyện",
+    cover: "URL ảnh bìa", 
+    author: "Tác giả",
+    description: "Mô tả truyện",
+    ongoing: true, // true/false
+    detail: "Thông tin chi tiết"
   });
 }
-// name: Tên truyện
-// cover: Url cover
-// host: domain của trang
-// author: Tên tác giả
-// description: Mô tả của truyện
-// detail: Thông tin của truyện
-// ongoing: true/false, Trạng thái đang ra của truyện
-// genres: <optional>: Trả về list script genre của truyện, cách dùng tương tự mục list genre
-// suggests: <optional>: Trả về list script truyện liên quan, cách dùng tương tự phần genre
-// comments: <optional>: Trả về list script comments
-// comment.js
-// function execute(input, next) {
-//     return Response.success([
-//         {name, content, description}
-//     ], next);
-// }
 ```
 
+#### 📚 Table of Contents (toc.js)
 ```javascript
-// search trả về kết quả tìm kiếm, trường hợp không có sẽ dùng google seach
-// search.js
-// key = key search
-// page = <rỗng>
-// search.js - page đầu
-function execute(key, page) {
-  return Response.success([{ name, link, host, cover, description }], next);
-}
-// name: Tên truyện
-// link: url của truyện
-// host:<optional> domain của link, nếu link đã bao gồm domain thì không cần
-// cover: url của ảnh cover
-// description: mô tả thêm
-
-// Kết quả của page đầu sẽ tiếp tục làm input của page tiếp theo
-// key = key search
-// page = next trả về từ page đầu, trường hợp next = <rỗng> hoặc null sẽ dừng load
-// search.js - page 2
-function execute(key, page) {
-  return Response.success([{ name, link, host, cover, description }], next);
-}
-```
-
-```javascript
-// page trả về danh sách các trang của mục lục nếu mục lục được phân thành nhiều trang
-// page.js
-// url = url truyện giống detail
 function execute(url) {
-  return Response.success([page1, page2]);
+  return Response.success([
+    {
+      name: "Chương 1: Bắt đầu",
+      url: "https://example.com/chap/1", 
+      host: "example.com" // Tùy chọn
+    }
+  ]);
 }
 ```
 
+#### 📖 Chapter Content (chap.js)
 ```javascript
-// toc: Trả về mục lục trên từng page
-// toc.js
-// url: path trả về từ page, nếu không có page thì url là url giống ở detail
 function execute(url) {
-  return Response.success([{ name, url, host }]);
-}
-// name: Tên chương
-// url: url của chương
-// host:<optional> domain của url, nếu url đã bao gồm domain thì không cần
-```
-
-```javascript
-// chap: trả về nội dung của chương truyện
-// chap.js
-// url: url trả về từ toc
-function execute(url) {
+  // Lấy nội dung chương
+  const response = fetch(url);
+  const doc = response.html();
+  const content = doc.select(".content").html();
+  
   return Response.success(content);
 }
 ```
 
-# Các function bổ trợ
+### 🛠 Utility Functions
 
-## Javascript
-
-- Http request
-
+#### 🌐 HTTP Requests
 ```javascript
-var response = fetch(url); // GET equest http return Response
-var response = fetch(url, {
-  method: "POST", // GET, POST, PUT, DELETE, PATCH
-  headers: {
-    aaa: "xxx",
-    bbb: "yyy",
-  },
-  body: {
-    aaa: "xxx",
-    bbb: "yyy",
-  },
-}); // Full request http với options return Response
-let status = response.status; // Http status code
-let isSuccess = response.ok; // Check request success (status >= 200 && status < 300)
-let headers = response.headers; // Trả về header của response
+// GET request
+const response = fetch(url);
 
-let doc = response.html(); // Trả về response request dạng Document object
-let doc = response.html(charset); // Trả về response request dạng Document object
-let text = response.text(); // Trả về response request dạng string
-let text = response.text(charset); // Trả về response request dạng string
-let json = response.json(); // Trả về response request dạng JSONObject
+// POST request với options
+const response = fetch(url, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: { key: "value" }
+});
+
+// Xử lý response
+const doc = response.html();        // HTML Document
+const text = response.text();       // Plain text
+const json = response.json();       // JSON object
+const status = response.status;     // HTTP status code
 ```
 
-- Html parse
-
+#### 🧹 HTML Processing
 ```javascript
-Html.parse(text); // Chuyển html text sang Document object
-Html.clean(text, ["div", "p"]); // Clean html trừ các thẻ được liệt kê
+// Parse HTML từ string
+const doc = Html.parse(htmlString);
+
+// Clean HTML giữ lại một số thẻ
+const cleaned = Html.clean(htmlString, ["p", "br", "strong"]);
+
+// CSS Selector (sử dụng JSoup syntax)
+const elements = doc.select("div.content p");
 ```
 
-Document selector using [jsoup](https://jsoup.org/cookbook/extracting-data/selector-syntax)
-
-- Response
-
+#### 🤖 Browser Automation
 ```javascript
-Response.success(data); // Trả về response thành công với data
-Response.success(data, data2); // Trả về response thành công với data, data2
-Response.error(message); // Trả về response thất bại với nội dung lỗi
+const browser = Engine.newBrowser();
+browser.setUserAgent(UserAgent.android());
+
+// Launch trang web
+const doc = browser.launch(url, 30000); // timeout 30s
+
+// Chạy JavaScript
+const result = browser.callJs("document.title", 1000);
+
+// Đóng browser
+browser.close();
 ```
 
--- Browser
-
+#### 🔧 Utilities
 ```javascript
-var browser = Engine.newBrowser(); // Khởi tạo browser
-browser.setUserAgent(UserAgent.android()); // Tùy chỉnh user agent
-browser.launch(url, timeout); // Mở trang web với timeout, trả về Document object
-browser.callJs(script, waitTime); // Gọi Javascript function trên trang với waitTime, trả về Document object
-browser.urls(); // Trả về các url đã request trên trang
-browser.waitUrl(urls, timeout); // Đợi urls load với timeout
-browser.html(); // Trả về Document object của trang web
-browser.close(); // Đóng browser khi đã xử lý xong
+Console.log("Debug message");    // Log debug
+load("helper.js");              // Load file JS khác  
+sleep(5000);                    // Delay 5 giây
 ```
 
--- Other
+---
 
-```javascript
-Console.log(); // Log data in tab logcat
-load("filename.js"); // Load file js
-sleep(10000); // Delay 10 giây
-```
+## 🧪 Kiểm tra Extension
 
-# Test extension
+### 🖥 Test với PC (Java Tool)
 
-- PC cài Java phiên bản 1.8 trở lên
-- Kết nối điện thoại và PC cùng 1 mạng lan.
-- Trên điện thoại chạm 7 lần vào tên phiên bản để mở tính năng nhà phát triển
+1. **Kết nối mạng LAN**
+   - Đảm bảo PC và điện thoại cùng mạng WiFi
 
-  ![Version app](tutorial/1.jpg)
+2. **Kích hoạt Developer Mode**
+   - Chạm 7 lần vào phiên bản trong VBook App
+   - Bật "Chế độ nhà phát triển"
+   - Ghi nhớ IP address hiển thị
 
-- Bật `chế độ nhà phát triển` để lấy IP của điện thoại.
+3. **Chạy Extension Maker**
+   ```bash
+   java -jar ExtensionMaker.jar
+   ```
+   
+4. **Nhập IP và test**
+   - Nhập IP của điện thoại
+   - Load extension và test từng function
 
-![IP](tutorial/2.jpg)
+### 💻 Test với VSCode
 
-- Nhập IP vào tool trên PC
+1. **Cài đặt Extension**
+   - Tải [VBook Extension Maker](https://github.com/faea726/vbook-extension-maker/releases/latest)
+   - Cài vào VSCode
 
-![IP](tutorial/3.png)
+2. **Test script**
+   - Mở file `.js` bất kỳ
+   - Chuột phải → Chọn function test
+   - Nhập thông tin khi được yêu cầu
 
-# Cách test extension với VSCode:
+---
 
-- Cài [extension](https://github.com/faea726/vbook-extension-maker/releases/latest) vào VSCode
+## 🤝 Đóng góp
 
-- Mở một script bất kỳ
+Chúng tôi rất hoan nghênh mọi đóng góp! 
 
-- Chuột phải và chọn mục tương ứng.
+### 🎯 Cách đóng góp
 
-- Nhập thông tin khi có input box yêu cầu.
+1. **Fork** repository này
+2. **Tạo branch** cho tính năng mới: `git checkout -b feature/ten-tinh-nang`
+3. **Commit** thay đổi: `git commit -m 'Thêm tính năng xyz'`
+4. **Push** lên branch: `git push origin feature/ten-tinh-nang`
+5. **Tạo Pull Request**
 
-![IP](tutorial/4.png)
+### 📋 Quy tắc đóng góp
+
+- ✅ Code phải clean và có comment
+- ✅ Test kỹ extension trước khi PR
+- ✅ Tuân thủ coding style hiện tại
+- ✅ Cập nhật README nếu cần
+
+### 🐛 Báo lỗi
+
+Phát hiện bug? [Tạo issue](https://github.com/Vitbupdk/vbook/issues/new) với thông tin:
+
+- 📱 Phiên bản VBook App
+- 🔧 Extension gặp lỗi
+- 📝 Mô tả chi tiết lỗi
+- 🔄 Các bước tái tạo lỗi
+
+---
+
+## 📄 Giấy phép
+
+Project này được phân phối dưới giấy phép **MIT License**. Xem [LICENSE](LICENSE) để biết thêm chi tiết.
+
+---
+
+## 🙏 Lời cảm ơn
+
+- 💝 **VBook Team** - Phát triển ứng dụng tuyệt vời
+- 🌟 **Contributors** - Những người đóng góp extensions
+- 🤝 **Community** - Cộng đồng người dùng nhiệt tình
+
+---
+
+## 📞 Liên hệ
+
+- 👨‍💻 **Author**: [Vitbupdk](https://github.com/Vitbupdk)
+- 📧 **Email**: Liên hệ qua GitHub Issues
+- 🔗 **Website**: [VBook Extensions](https://github.com/Vitbupdk/vbook)
+
+---
+
+<div align="center">
+
+**⭐ Nếu project hữu ích, hãy cho một Star nhé! ⭐**
+
+Made with ❤️ by [Vitbupdk](https://github.com/Vitbupdk)
+
+</div>
