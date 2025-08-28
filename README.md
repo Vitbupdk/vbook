@@ -13,6 +13,31 @@
 
 ---
 
+## 📚 **NEW: Comprehensive Wiki & Documentation!** 
+
+<div align="center">
+
+[![Wiki](https://img.shields.io/badge/📚-Complete_Wiki-success?style=for-the-badge)](docs/README.md)
+[![Quick Start](https://img.shields.io/badge/⚡-5min_Setup-blue?style=for-the-badge)](docs/getting-started/quick-start.md)
+[![API Docs](https://img.shields.io/badge/🔧-API_Reference-orange?style=for-the-badge)](docs/api-reference/core-api.md)
+[![Tutorials](https://img.shields.io/badge/📱-Tutorials-purple?style=for-the-badge)](docs/tutorials/)
+
+**🎯 Everything you need: Setup → Development → Deployment**
+
+</div>
+
+### 🚀 **Quick Access:**
+- 📖 **[Wiki Homepage](docs/README.md)** - Central navigation hub
+- ⚡ **[Quick Start Guide](docs/getting-started/quick-start.md)** - Get running in 5 minutes
+- 🔧 **[API Reference](docs/api-reference/core-api.md)** - Complete technical docs
+- 📱 **[Comic Tutorial](docs/tutorials/comic-extension.md)** - Step-by-step walkthrough
+- 🐛 **[Troubleshooting](docs/troubleshooting/common-issues.md)** - Solve any issues
+- ❓ **[FAQ](docs/troubleshooting/faq.md)** - Community Q&A
+
+> 💡 **New to VBook Extensions?** Start with our [5-minute Quick Start Guide](docs/getting-started/quick-start.md)!
+
+---
+
 ## 📋 Mục lục
 
 - [🚀 Tính năng](#-tính-năng)
@@ -84,6 +109,15 @@
 
 ## 📖 Hướng dẫn phát triển
 
+> 📚 **For comprehensive development guides, visit our [Complete Wiki System](docs/README.md)**
+
+### 🚀 **Quick Development Path:**
+
+1. **⚡ Setup (5 minutes)**: [Quick Start Guide](docs/getting-started/quick-start.md)
+2. **📚 Learn APIs**: [Core API Reference](docs/api-reference/core-api.md)  
+3. **🛠 Build Extension**: [Comic Tutorial](docs/tutorials/comic-extension.md)
+4. **🐛 Debug Issues**: [Troubleshooting Guide](docs/troubleshooting/common-issues.md)
+
 ### 🏗 Cấu trúc Extension
 
 Mỗi extension cần có cấu trúc thư mục như sau:
@@ -99,6 +133,8 @@ my-extension/
     ├── search.js      # Script tìm kiếm (tùy chọn)
     └── home.js        # Script trang chủ (tùy chọn)
 ```
+
+📖 **[Detailed Development Guide →](docs/tutorials/comic-extension.md)**
 
 ### ⚙️ Cấu hình Plugin (plugin.json)
 
@@ -239,35 +275,29 @@ sleep(5000);                    // Delay 5 giây
 
 ## 🧪 Kiểm tra Extension
 
+> 🔍 **For detailed testing guides and troubleshooting, see [Troubleshooting Documentation](docs/troubleshooting/common-issues.md)**
+
+### 🚀 **Quick Testing Setup:**
+
+📖 **[Complete Testing Guide →](docs/getting-started/installation.md#testing-your-extension)**
+
 ### 🖥 Test với PC (Java Tool)
 
-1. **Kết nối mạng LAN**
-   - Đảm bảo PC và điện thoại cùng mạng WiFi
-
-2. **Kích hoạt Developer Mode**
-   - Chạm 7 lần vào phiên bản trong VBook App
-   - Bật "Chế độ nhà phát triển"
-   - Ghi nhớ IP address hiển thị
-
-3. **Chạy Extension Maker**
-   ```bash
-   java -jar ExtensionMaker.jar
-   ```
-   
-4. **Nhập IP và test**
-   - Nhập IP của điện thoại
-   - Load extension và test từng function
+1. **Kết nối mạng LAN** - PC và điện thoại cùng WiFi
+2. **Kích hoạt Developer Mode** - Chạm 7 lần vào version trong VBook
+3. **Chạy Extension Maker**: `java -jar ExtensionMaker.jar`
+4. **Test functions** với real URLs
 
 ### 💻 Test với VSCode
 
-1. **Cài đặt Extension**
-   - Tải [VBook Extension Maker](https://github.com/faea726/vbook-extension-maker/releases/latest)
-   - Cài vào VSCode
+1. **Cài đặt [VBook Extension Maker](https://github.com/faea726/vbook-extension-maker/releases/latest)**
+2. **Right-click** any `.js` file → Test function
+3. **Enter URL** khi được prompt
 
-2. **Test script**
-   - Mở file `.js` bất kỳ
-   - Chuột phải → Chọn function test
-   - Nhập thông tin khi được yêu cầu
+### 🐛 **Having Issues?**
+- 📖 [Common Issues Guide](docs/troubleshooting/common-issues.md)
+- ❓ [FAQ](docs/troubleshooting/faq.md)  
+- 💬 [Ask Community](https://github.com/Vitbupdk/vbook/discussions)
 
 ---
 

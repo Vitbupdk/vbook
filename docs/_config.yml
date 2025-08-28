@@ -1,0 +1,102 @@
+# GitHub Pages Jekyll Configuration
+title: VBook Extensions Wiki
+description: Comprehensive documentation for VBook Extensions development
+author: VBook Extensions Team
+email: support@vbook-extensions.dev
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# GitHub Pages settings
+baseurl: "/vbook"
+url: "https://vitbupdk.github.io"
+
+# Navigation
+nav:
+  - title: "🏠 Home"
+    url: "/"
+  - title: "🚀 Quick Start"
+    url: "/getting-started/quick-start"
+  - title: "🔧 API Reference" 
+    url: "/api-reference/core-api"
+  - title: "📱 Tutorials"
+    url: "/tutorials/"
+  - title: "🐛 Troubleshooting"
+    url: "/troubleshooting/"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Collections
+collections:
+  getting-started:
+    output: true
+    permalink: /:collection/:name/
+  api-reference:
+    output: true
+    permalink: /:collection/:name/
+  tutorials:
+    output: true
+    permalink: /:collection/:name/
+  troubleshooting:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "getting-started"
+    values:
+      layout: "default"
+      category: "Getting Started"
+  - scope:
+      path: ""
+      type: "api-reference"
+    values:
+      layout: "default"
+      category: "API Reference"
+  - scope:
+      path: ""
+      type: "tutorials"
+    values:
+      layout: "default"
+      category: "Tutorials"
+  - scope:
+      path: ""
+      type: "troubleshooting"
+    values:
+      layout: "default"
+      category: "Troubleshooting"
+
+# SEO
+google_analytics: # Add your GA tracking ID here
+google_site_verification: # Add your Google site verification code
+
+# Social
+social:
+  - platform: github
+    user_url: "https://github.com/Vitbupdk/vbook"
+  - platform: discussions
+    user_url: "https://github.com/Vitbupdk/vbook/discussions"
