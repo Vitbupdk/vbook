@@ -4,6 +4,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/Vitbupdk/vbook?style=for-the-badge)](https://github.com/Vitbupdk/vbook/network)
 [![GitHub issues](https://img.shields.io/github/issues/Vitbupdk/vbook?style=for-the-badge)](https://github.com/Vitbupdk/vbook/issues)
 [![License](https://img.shields.io/github/license/Vitbupdk/vbook?style=for-the-badge)](LICENSE)
+[![GitHub Pages](https://img.shields.io/badge/📚-Live_Docs-success?style=for-the-badge)](https://vitbupdk.github.io/vbook/)
 
 > 🎯 **Bộ sưu tập extension cho ứng dụng VBook** - Hỗ trợ đọc truyện từ nhiều nguồn khác nhau với hơn **13+ extensions** được tối ưu hóa.
 
@@ -23,6 +24,8 @@
 [![Tutorials](https://img.shields.io/badge/📱-Tutorials-purple?style=for-the-badge)](docs/tutorials/)
 
 **🎯 Everything you need: Setup → Development → Deployment**
+
+> 🌐 **Live Documentation**: https://vitbupdk.github.io/vbook/ (🚧 Setup in progress - see [setup guide](setup-github-pages.md))
 
 </div>
 
