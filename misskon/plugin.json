@@ -9,7 +9,8 @@
     "locale": "en_US",
     "language": "javascript",
     "type": "comic",
-    "tag": "nsfw"
+    "tag": "nsfw",
+    "baseUrl": "https://misskon.com"
   },
   "script": {
     "home": "home.js",

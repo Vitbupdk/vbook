@@ -9,7 +9,8 @@
     "locale": "vi_VN",
     "language": "javascript",
     "type": "novel",
-    "encrypt": true
+    "encrypt": true,
+    "baseUrl": "http://14.225.254.182"
   },
   "script": {
     "detail": "detail.js",

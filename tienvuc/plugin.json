@@ -8,7 +8,8 @@
     "description": "Liên hệ Nhocconsr",
     "locale": "vi_VN",
     "language": "javascript",
-    "type": "novel"
+    "type": "novel",
+    "baseUrl": "https://tienvuc.info"
   },
   "script": {
     "home": "home.js",

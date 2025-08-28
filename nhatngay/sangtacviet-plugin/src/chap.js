@@ -6,16 +6,13 @@ function execute(url) {
         books=JSON.parse(books)
         //return Response.success(books)
         try{
-            console.log("0")
             return Response.success(books.data.replace(/<i([^>]*)t='(.*?)'([^>]*)>(.*?)<\/i>/g, `<i$1t='$2'$3>$2</i>`).replace(/\n\t/g, "<\/p><p>\t")
 );
             
         }catch(error){
             try{
-                console.log("1")
                 return Response.success(books.data.replace(/\n\t/g, "<\/p><p>\t"));
             }catch(error){
-                console.log("2")
                 return Response.error(books.err)
             }
             

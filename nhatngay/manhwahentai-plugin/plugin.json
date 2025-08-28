@@ -1,23 +1,24 @@
 {
-    "metadata": {
-        "name": "ManhwaHentai",
-        "author": "Vitbupdk",
-        "version": 1,
-        "source": "https://manhwahentai.me",
-        "regexp": "(www.)?manhwahentai.me/webtoon/[^/]+/?",
-        "description": "Đọc truyện trên trang manhwahentai.me",
-        "locale": "vi-VN",
-        "language": "javascript",
-        "type": "comic",
-        "tag": "nsfw",
-        "is_free": true
-    },
-    "script": {
-        "home": "home.js",
-        "genre": "genre.js",
-        "detail": "detail.js",
-        "search": "search.js",
-        "toc": "toc.js",
-        "chap": "chap.js"
-    }
+  "metadata": {
+    "name": "ManhwaHentai",
+    "author": "Vitbupdk",
+    "version": 1,
+    "source": "https://manhwahentai.me",
+    "regexp": "(www.)?manhwahentai.me/webtoon/[^/]+/?",
+    "description": "Đọc truyện trên trang manhwahentai.me",
+    "locale": "vi-VN",
+    "language": "javascript",
+    "type": "comic",
+    "tag": "nsfw",
+    "is_free": true,
+    "baseUrl": "https://manhwahentai.me"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
 }

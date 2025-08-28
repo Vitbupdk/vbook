@@ -1,23 +1,24 @@
 {
-    "metadata": {
-        "name": "CManga",
-        "author": "Vitbupdk",
-        "version": 1,
-        "source": "https://cmangax3.com",
-        "regexp": "(www.)?cmanga[a-z]\\d?.com/album/[^/]+/?$",
-        "description": "Đọc truyện trên trang CManga",
-        "locale": "vi_VN",
-        "language": "javascript",
-        "type": "comic",
-        "encrypt": true,
-        "is_free": true
-    },
-    "script": {
-        "home": "home.js",
-        "genre": "genre.js",
-        "detail": "detail.js",
-        "search": "search.js",
-        "toc": "toc.js",
-        "chap": "chap.js"
-    }
+  "metadata": {
+    "name": "CManga",
+    "author": "Vitbupdk",
+    "version": 1,
+    "source": "https://cmangax3.com",
+    "regexp": "(www.)?cmanga[a-z]\\d?.com/album/[^/]+/?$",
+    "description": "Đọc truyện trên trang CManga",
+    "locale": "vi_VN",
+    "language": "javascript",
+    "type": "comic",
+    "encrypt": true,
+    "is_free": true,
+    "baseUrl": "https://cmangax3.com"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
 }

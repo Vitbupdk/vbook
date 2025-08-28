@@ -8,7 +8,8 @@
     "description": "Truyện voz",
     "locale": "vi_VN",
     "language": "javascript",
-    "type": "novel"
+    "type": "novel",
+    "baseUrl": "https://vozer.vn"
   },
   "script": {
     "home": "home.js",

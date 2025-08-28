@@ -14,7 +14,6 @@ function execute(url) {
         }
     })
     
-    console.log(URL_STV+"/index.php?ngmar=chapterlist&sajax=getchapterlist&h="+input[1]+"&bookid="+input[2])
     if(response.ok){
         let books=response.json()
            let toc=books.data
